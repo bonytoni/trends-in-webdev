@@ -11,11 +11,11 @@ type ContactCardProps = {
 // Note that we destructed the props object into three variables.
 // Thus, we can use the variables directly in the function body.
 //
-// Additionally, we can track only `name` and `nickName` as dependencies
+// Additionally, we can track only `name` and `nickname` as dependencies
 // in the `useMemo` hook, since `phone` is not used in the memoized value.
 // Thus, if `phone` changes, the memoized value will not be needlessly updated.
 const ContactCard = ({ name, nickname, phone }: ContactCardProps) => {
-  // Memoize preferred title: nickName if provided, name otherwise.
+  // Memoize preferred title: nickname if provided, name otherwise.
   // Only update the memoized value if the props change.
   const title = useMemo(() => {
     // Check that a) a nickname was provided, and b) it is not an empty string.
