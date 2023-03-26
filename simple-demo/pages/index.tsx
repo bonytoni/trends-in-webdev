@@ -2,7 +2,7 @@
 import ContactCard, { ContactCardProps } from '@/components/ContactCard'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 // function SimpleCounter() {
 //   const [count, setCount] = useState<number>(0)
@@ -95,8 +95,10 @@ export default function Home() {
         }}
       >
         {/*
-          We bind the three state values tracking the user's input for Name, Nickname, and Phone to HTML input elements.
-          When the user types in the input, the state is updated, and the input element is updated to reflect the new state.
+          We bind the three state values tracking the user's input for Name,
+          Nickname, and Phone to HTML input elements.
+          When the user types in the input, the state is updated, and the input
+          element is updated to reflect the new state.
           Look at the `value` and `onChange` attributes of the input elements below.
         */}
         <label htmlFor='name'>Name</label>
@@ -108,10 +110,10 @@ export default function Home() {
             setFormName(event.currentTarget.value);
           }}
         />
-        <label htmlFor='nickName'>Nickname</label>
+        <label htmlFor='nickname'>Nickname</label>
         <input
           type='text'
-          id='nickName'
+          id='nickname'
           value={formNickname}
           onChange={(event) => {
             setFormNickname(event.currentTarget.value);
