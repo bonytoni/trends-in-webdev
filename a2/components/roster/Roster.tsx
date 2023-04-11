@@ -1,22 +1,49 @@
 import { ClubMember } from "../../types"
+import RosterItem from "./RosterItem"
 
 const rosterData: ClubMember[] = [
-  /* TODO Add at least THREE people to your roster */
   {
-    name: "Example Member",
-    netid: "abc123",
-    partyParrot: "https://cultofthepartyparrot.com/parrots/shipitparrot.gif",
-    favoriteIceCream: "Vanilla",
+    name: "Michael Le",
+    netid: "ml324",
+    partyParrot: "https://cultofthepartyparrot.com/parrots/hd/kindasusparrot.gif",
+    favoriteIceCream: "all flavors",
+    favoriteTrick: "backpacking",
+    hobby: "eating chips"
+  },
+  {
+    name: "Larry Lu",
+    netid: "ll105",
+    partyParrot: "https://cultofthepartyparrot.com/parrots/hd/tpparrot.gif",
+    favoriteIceCream: "vanilla",
+    favoriteTrick: "bodywrap",
+    hobby: "scrolling through twitter"
+  },
+  {
+    name: "Kenneth Wu",
+    netid: "kw69",
+    partyParrot: "https://cultofthepartyparrot.com/parrots/hd/dealwithitparrot.gif",
+    favoriteIceCream: "chocolate",
+    favoriteTrick: "monorail",
+    hobby: "one piece"
   },
 ]
 
 const Roster = () => {
   return (
     <>
-      <p>This is the [TODO your club] club.</p>
+      <p>This is the Pro-Yos club.</p>
       <p>It is the coolest club ever! Because it has the coolest people.</p>
-      {/* TODO List your roster using .map() and the RosterItem component
-          remember to assign key prop - you may assume netid is unique */}
+      {rosterData.map((member) => {
+        return (
+          <>
+            <hr />
+            < RosterItem
+              {...member}
+              key={member.netid}
+            />
+          </>
+        )
+      })}
     </>
   )
 }

@@ -1,13 +1,9 @@
 import { ClubMember } from "../../types"
 
-type Props = {
-  member: ClubMember
-}
-
-// RosterItem takes in a prop called "member", which we destructure immediately
-const RosterItem = ({
-  member: { name, partyParrot, favoriteIceCream },
-}: Props) => (
+// RosterItem takes in a type called "ClubMember", which we destructure immediately
+const RosterItem = (
+  { name, partyParrot, favoriteIceCream, favoriteTrick, hobby }
+    : ClubMember) => (
   <div>
     <h2>
       {name} <img src={partyParrot} alt={`${name}'s party parrot`} />
@@ -15,7 +11,12 @@ const RosterItem = ({
     <p>
       Favorite Ice Cream Flavor: <a>{favoriteIceCream}</a>
     </p>
-    {/* TODO Display your additional fields in ClubMember type */}
+    <p>
+      Favorite Yo-Yo Trick: <a>{favoriteTrick}</a>
+    </p>
+    <p>
+      Hobby: <a>{hobby}</a>
+    </p>
   </div>
 )
 

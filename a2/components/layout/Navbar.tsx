@@ -27,7 +27,7 @@ const Navbar = () => (
       {navData
         .map(({ name, path }) => (
           <Link key={path} href={path}>
-            <a>{name}</a>
+            {name}
           </Link>
         ))
         // @ts-ignore
