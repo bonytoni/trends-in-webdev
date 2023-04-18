@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => (
   <footer>
     <hr />
-    <span>Created by [TODO My name (netid)]</span>
+    <span>Created by [Tony Chen (tc448)]</span>
   </footer>
 );
 

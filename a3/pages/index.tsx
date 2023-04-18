@@ -4,7 +4,7 @@ const IndexPage = () => (
   <Layout title="Home">
     <h1>My Trends A3 Project</h1>
     <p>I expand my BRB empire to the ends of the earth.</p>
-    <p>I worked on this assignment for [TODO x] hours.</p>
+    <p>I worked on this assignment for 4 hours.</p>
   </Layout>
 )
 

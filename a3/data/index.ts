@@ -16,4 +16,10 @@ export const UPGRADES_DATA: Upgrade[] = [
     basePrice: 50,
     incomePerTick: 4,
   },
+  {
+    id: "7/11",
+    name: "7-Eleven",
+    basePrice: 150,
+    incomePerTick: 18,
+  },
 ]
