@@ -21,8 +21,8 @@ const Game = () => {
   // TODO: Pass down this state to child components
   const [upgradeCounts, setUpgradeCounts] = useState(initUpgrades())
 
-  const clickIncome = 1 // TODO: Calculate this using upgradeCounts
-  const tickIncome = 0 // TODO: Calculate this using upgradeCounts
+  const clickIncome = 1 + Array.from(upgradeCounts.values()).reduce((sum, curr) => sum + curr) // TODO: Calculate this using upgradeCounts
+  const tickIncome = Array.from(upgradeCounts.entries()).reduce ((sum, curr) => sum + curr[0].incomePerTick * curr[1], 0) // TODO: Calculate this using upgradeCounts
 
   /** Ticker Section Begin: No need to touch */
   const onTick = useRef<() => void>()
@@ -40,16 +40,21 @@ const Game = () => {
   return (
     <div className={styles.container}>
       {/* TODO: Display '💰BRB Clicker💰' instead when you win (have purchased at least one of each upgrade) */}
-      <h1>BRB Clicker</h1>
+      {Array.from(upgradeCounts.values()).every(val => val >= 1) ?
+      <h1>💰BRB Clicker💰</h1> : <h1>BRB Clicker</h1>}
       {/* TOOD: Display a win message (such as <p>YOU WON! See how far you go!</p>) ONLY if you win */}
+      {Array.from(upgradeCounts.values()).every(val => val >= 1) ?
+      <p>YOU WON! See how far you go!</p> : <p>Go and make some money!!!</p>}
       <div className={styles.body}>
         <div className={styles.column}>
           {/* TODO: Add more props! */}
-          <ClickerSection clickIncome={clickIncome} tickIncome={tickIncome} />
+          <ClickerSection clickIncome={clickIncome} tickIncome={tickIncome}
+          brbs={brbs} setBRBs={setBRBs}/>
         </div>
         <div className={styles.column}>
           {/* TODO: Add more props! */}
-          <UpgradesSection brbs={brbs} />
+          <UpgradesSection brbs={brbs} setBRBs={setBRBs} upgradeCounts={upgradeCounts}
+          setUpgradeCounts={setUpgradeCounts}/>
         </div>
       </div>
     </div>

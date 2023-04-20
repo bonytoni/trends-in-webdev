@@ -14,12 +14,12 @@ export const UPGRADES_DATA: Upgrade[] = [
     id: "louies",
     name: "Louie's Lunch",
     basePrice: 50,
-    incomePerTick: 4,
+    incomePerTick: 6,
   },
   {
-    id: "7/11",
+    id: "value town",
     name: "7-Eleven",
     basePrice: 150,
-    incomePerTick: 18,
+    incomePerTick: 20,
   },
 ]
