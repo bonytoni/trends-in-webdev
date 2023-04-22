@@ -5,7 +5,7 @@ const Footer = () => (
   <Box as="footer" px={4}>
     <Divider my={4} />
     <Text fontSize="sm" color="subtle">
-      Created by [TODO My name (netid)]
+      Created by Tony Chen (tc448)
     </Text>
   </Box>
 )
