@@ -1,6 +1,8 @@
 import { Button, HStack, Input } from "@chakra-ui/react"
 import { FormEventHandler, useState } from "react"
 import { Task } from "../../types"
+import { db } from "../../util/firebase"
+import { addDoc, collection } from "firebase/firestore"
 
 const TaskAddControl = () => {
   const [input, setInput] = useState("")
@@ -14,8 +16,10 @@ const TaskAddControl = () => {
       text: input,
       checked: false,
     }
+    addDoc(collection(db, "tasks"), task)
 
     // TODO: Clear current input field
+    setInput("")
   }
 
   return (

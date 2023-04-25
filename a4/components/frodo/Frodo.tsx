@@ -1,9 +1,10 @@
 import { Heading, Spinner, VStack } from "@chakra-ui/react"
-import { onSnapshot } from "firebase/firestore"
+import { collection, onSnapshot, query } from "firebase/firestore"
 import { useEffect, useState } from "react"
-import { TaskWithId } from "../../types"
+import { Task, TaskWithId } from "../../types"
 import TaskAddControl from "./TaskAddControl"
 import TaskList from "./TaskList"
+import { db } from "../../util/firebase"
 
 const FrodoHeading = () => (
   <Heading
@@ -18,7 +19,7 @@ const FrodoHeading = () => (
 )
 
 // TODO: Create a Firebase query for the `tasks` collection
-const taskQuery = undefined
+const taskQuery = query(collection(db, "tasks"))
 
 const Frodo = () => {
   const [tasks, setTasks] = useState<TaskWithId[] | null>(null)
@@ -27,10 +28,14 @@ const Frodo = () => {
   // We define a function to run whenever the query result changes
   useEffect(() => {
     // TODO: Update `tasks` state using snapshot (uncomment the following)
-    // const unsubscribe = onSnapshot(taskQuery, (querySnapshot) => {
-      
-    // })
-    // return unsubscribe
+    const unsubscribe = onSnapshot(taskQuery, (querySnapshot) => {
+      const snapshotTasks : TaskWithId[] = querySnapshot.docs.map((doc) => {
+        const data = doc.data() as Task
+        return {...data, id: doc.id}
+      })
+      setTasks(snapshotTasks)
+    })
+    return unsubscribe
   }, [])
 
   return (

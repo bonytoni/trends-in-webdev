@@ -1,6 +1,8 @@
 import { DeleteIcon } from "@chakra-ui/icons"
 import { Checkbox, HStack, IconButton, Text } from "@chakra-ui/react"
 import { TaskWithId } from "../../types"
+import { collection, deleteDoc, doc, updateDoc } from "firebase/firestore"
+import { db } from "../../util/firebase"
 
 type Props = {
   readonly task: TaskWithId
@@ -9,10 +11,14 @@ type Props = {
 const TaskItem = ({ task: { id, text, checked } }: Props) => {
   const toggleTask = () => {
     // TODO: Implement this!
+    const taskDoc = doc(collection(db, "tasks"), id)
+    updateDoc(taskDoc, {checked: !checked})
   }
 
   const deleteTask = () => {
     // TODO: Implement this!
+    const taskDoc = doc(collection(db, "tasks"), id)
+    deleteDoc(taskDoc)
   }
 
   return (

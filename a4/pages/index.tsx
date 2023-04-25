@@ -10,7 +10,7 @@ const IndexPage = () => (
       I am busy so I made an app to keep track of my tasks.
     </Text>
     <Text fontSize="md" my="3">
-      I worked on this assignment for 2 hours.
+      I worked on this assignment for 1 hour.
     </Text>
   </Layout>
 )
