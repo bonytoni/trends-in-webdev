@@ -3,9 +3,11 @@ import { addDoc, collection } from "firebase/firestore"
 import { FormEventHandler, useState } from "react"
 import { Task } from "../../types"
 import { db } from "../../util/firebase"
+import { useAuth } from "../auth/AuthUserProvider"
 
 const TaskAddControl = () => {
   const [input, setInput] = useState("")
+  const { user } = useAuth()
 
   const addTask: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
@@ -15,6 +17,7 @@ const TaskAddControl = () => {
     const task: Task = {
       text: input,
       checked: false,
+      owner: user!.email!,
     }
     addDoc(collection(db, "tasks"), task)
     setInput("")

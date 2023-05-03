@@ -1,10 +1,11 @@
 import { Heading, Spinner, VStack } from "@chakra-ui/react"
-import { collection, onSnapshot, query } from "firebase/firestore"
+import { collection, onSnapshot, query, where } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { db } from "../../util/firebase"
 import { Task, TaskWithId } from "../../types"
 import TaskAddControl from "./TaskAddControl"
 import TaskList from "./TaskList"
+import { useAuth } from "../auth/AuthUserProvider"
 
 const FrodoHeading = () => (
   <Heading
@@ -18,10 +19,14 @@ const FrodoHeading = () => (
   </Heading>
 )
 
-const taskQuery = query(collection(db, "tasks"))
-
 const Frodo = () => {
   const [tasks, setTasks] = useState<TaskWithId[] | null>(null)
+  const { user } = useAuth()
+
+  const taskQuery = query(
+    collection(db, "tasks"),
+    where("owner", "==", user!.email)
+  )
 
   useEffect(() => {
     const unsubscribe = onSnapshot(taskQuery, (querySnapshot) => {
